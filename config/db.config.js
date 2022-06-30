@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
   'sequlize',
   'root',
-  '', {
+  '123456', {
 
       // Explicitly specifying 
       // mysql database
