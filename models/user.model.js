@@ -35,7 +35,9 @@ return seq.define('user', {
 	name: { type: Sequelize.STRING, allowNull: false },
 
 	// Column-3, email
-	email: { type: Sequelize.STRING, allowNull: false },
+	username: { type: Sequelize.STRING, allowNull: false },
+	password: { type: Sequelize.STRING, allowNull: false },
+
 
 	// Column-4, default values for
 	// dates => current time

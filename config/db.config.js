@@ -1,20 +1,31 @@
 
 const Sequelize = require('sequelize');
+require('dotenv').config()
+const env=require("../envorment.json");
+
+
 const sequelize = new Sequelize(
-  'sequlize',
-  'root',
-  '123456', {
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD, {
 
       // Explicitly specifying 
       // mysql database
       dialect: 'mysql',
 
       // By default host is 'localhost'           
-      host: 'localhost'
+      host: process.env.DB_HOST
   }
 );
 
+sequelize.authenticate().then(()=>{
+  console.log("database conected");
+})
+.catch((err)=>{console.log(err)});
 
+
+// sequelize.sync()  
+sequelize.sync({ alter: true });
 let db={
   sequelize,
   Sequelize,

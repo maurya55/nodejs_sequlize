@@ -57,7 +57,7 @@ exports.postInsert=(req,res)=>{
     .catch((error)=>{
         res.status(500).send({
             message:
-                err.message || 'Some error occurred while creating the address.',
+                error.message || 'Some error occurred while creating the address.',
         });
     })
 

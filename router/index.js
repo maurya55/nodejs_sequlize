@@ -1,4 +1,5 @@
 const express = require("express");
+const { User } = require("../config/db.config");
 
 var router = express.Router();
 const indexController = require('../controller/indexController');
@@ -17,11 +18,26 @@ const indexController = require('../controller/indexController');
 *              description: To test Get method
 */
 
+
+
+
 router.get("/", (req, res) => {
     console.log("testing");
     return res.send("<h1>docker is awesome 3</h1>")
 })
 
+router.get('/getuser', async (req,res)=>{
+  const getData= await User.findOne({
+        username:"testing@gmail.com",
+        passport:"123"
+    })
+
+
+    return res.status(200).json({
+        data:getData
+    })
+
+});
 
 
 router.post('/userInsert', indexController.userInsert);
